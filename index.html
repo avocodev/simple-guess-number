@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tebak Angka</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <main class="content">
+        <h1>Tebak Angka 1 - 100</h1>
+
+        <p class="health js-health"></p>
+
+        <input
+          type="number"
+          class="input-number js-input-number"
+          placeholder="Masukkan Angka"
+        />
+        <button class="button js-button">Tes</button>
+
+        <p class="js-answear"></p>
+        <div class="true-number js-true-number"></div>
+      </main>
+    </div>
+    <script>
+      const randomNumber = Math.floor(Math.random() * 100);
+      let health = 10;
+
+      function guessNumber(randomNumber) {
+        const inputElement = document.querySelector(".js-input-number");
+        const value = Number(inputElement.value);
+
+        if (!value) {
+          return alert("Harus memasukkan angka!");
+        } else {
+          let result = "";
+
+          if (value < randomNumber) {
+            result = "Terlalu kecil!";
+            health--;
+          } else if (value > randomNumber) {
+            result = "Terlalu besar!";
+            health--;
+          } else if (value === randomNumber) {
+            result = "Selamat Anda berhasil menebak angka dengan benar!";
+            userWinner();
+          }
+
+          score(health);
+
+          return result;
+        }
+      }
+
+      function score(health) {
+        document.querySelector(".js-health").innerHTML = `Nyawa: ${health}`;
+
+        if (health === 0) {
+          document.querySelector(".js-true-number").innerHTML = `
+            <p>Maaf nyawa anda habis!</p>
+            <p>Angka yang benar adalah ${randomNumber}</p>
+            <p>
+              Mau coba lagi?
+              <div class="confirmation-button">
+                <button onclick=" location.reload();">Yes</button>
+                <button onclick="
+                  alert('Terimakasih sudah bermain!');
+                  location.reload();
+                ">No</button>
+              </div>
+            </p>  
+          `;
+
+          document.querySelector(".js-button").style.display = "none";
+        }
+      }
+      score(health);
+
+      function userWinner() {
+        document.querySelector(".js-true-number").innerHTML = `
+            <p class="winner">
+              Mau coba lagi?
+
+              <div class="confirmation-button">
+                <button onclick=" location.reload();">Yes</button>
+                <button onclick="
+                  alert('Terimakasih sudah bermain!');
+                  location.reload();
+                ">No</button>
+              </div>
+            </p>  
+          `;
+
+        document.querySelector(".js-button").style.display = "none";
+      }
+
+      document.querySelector(".js-button").addEventListener("click", () => {
+        const result = guessNumber(randomNumber);
+
+        if (result) {
+          alert(result);
+        }
+      });
+    </script>
+  </body>
+</html>
