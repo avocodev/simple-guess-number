@@ -18,14 +18,17 @@
           class="input-number js-input-number"
           placeholder="Masukkan Angka"
         />
+
+        <p class="result js-result"></p>
+        <div class="js-confirmation-button"></div>
+
         <button class="button js-button">Tes</button>
 
-        <p class="js-answear"></p>
         <div class="true-number js-true-number"></div>
       </main>
     </div>
     <script>
-      const randomNumber = Math.floor(Math.random() * 100);
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
       let health = 10;
 
       function guessNumber(randomNumber) {
@@ -79,8 +82,8 @@
       score(health);
 
       function userWinner() {
-        document.querySelector(".js-true-number").innerHTML = `
-            <p class="winner">
+        document.querySelector(".js-confirmation-button").innerHTML = `
+            <p>
               Mau coba lagi?
 
               <div class="confirmation-button">
@@ -100,7 +103,7 @@
         const result = guessNumber(randomNumber);
 
         if (result) {
-          alert(result);
+          document.querySelector(".js-result").innerHTML = result;
         }
       });
     </script>

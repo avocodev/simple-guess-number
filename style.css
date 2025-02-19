@@ -104,10 +104,38 @@ body {
   margin-top: 20px;
 }
 
+.js-confirmation-button {
+  margin-top: -25px;
+}
+
+.js-confirmation-button > p {
+  color: white;
+}
+
+.js-confirmation-button > .confirmation-button {
+  margin-top: 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.js-confirmation-button > .confirmation-button > button {
+  width: 50px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
 .confirmation-button > button {
   width: 50px;
   height: 25px;
   cursor: pointer;
   border-radius: 5px;
   border: none;
+}
+
+.result {
+  color: white;
+  margin: -30px 0 30px;
 }
