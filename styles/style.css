@@ -13,14 +13,83 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+
   height: 100%;
   background-image: linear-gradient(
-    to bottom,
-    rgb(0, 238, 255),
-    rgb(0, 255, 179)
+    to bottom left,
+
+    rgb(0, 81, 255),
+    rgb(204, 0, 255)
   );
 }
 
 .selection-levels {
   display: none;
+}
+
+.container > h1 {
+  color: white;
+}
+
+.play-button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.play-button:hover {
+  background-color: black;
+  border: none;
+}
+
+.selection-levels > h2 {
+  color: white;
+  text-align: center;
+}
+
+.selection-levels .level-of-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.level-of-buttons > button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.level-of-buttons > button:first-child {
+  background-color: rgb(10, 177, 10);
+}
+
+.level-of-buttons > button:nth-child(2) {
+  background-color: rgb(223, 238, 14);
+  color: black;
+}
+
+.level-of-buttons > button:last-child {
+  background-color: red;
+}
+
+.container .back-button {
+  width: 100%;
+  height: 30px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }

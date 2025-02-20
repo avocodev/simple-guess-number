@@ -1,5 +1,10 @@
+setTimeout(() => {
+  document.querySelector(".js-loading").style.display = "none";
+}, 3000);
+
 const level = Number(localStorage.getItem("level"));
 const randomNumber = Math.floor(Math.random() * level) + 1;
+
 let health = 10;
 
 if (level === 50) {
@@ -12,7 +17,7 @@ if (level === 50) {
 
 document.querySelector(".js-title").innerHTML = `Tebak Angka 1 - ${level}`;
 
-function guessNumber(randomNumber) {
+function playGame(randomNumber) {
   const inputElement = document.querySelector(".js-input-number");
   const value = Number(inputElement.value);
 
@@ -53,7 +58,7 @@ function score(health) {
             <button onclick=" location.reload();">Yes</button>
             <button onclick="
               alert('Terimakasih sudah bermain!');
-              location.reload();
+              location.href = 'index.html';
             ">No</button>
           </div>
         </p>  
@@ -74,7 +79,7 @@ function userWinner() {
           <button onclick=" location.reload();">Yes</button>
           <button onclick="
             alert('Terimakasih sudah bermain!');
-            location.reload();
+            location.href = 'index.html';
           ">No</button>
         </div>
       </p>  
@@ -85,9 +90,13 @@ function userWinner() {
 }
 
 document.querySelector(".js-button").addEventListener("click", () => {
-  const result = guessNumber(randomNumber);
+  const result = playGame(randomNumber);
 
   if (result) {
     document.querySelector(".js-result").innerHTML = result;
   }
+});
+
+document.querySelector(".js-back-button").addEventListener("click", () => {
+  location.href = "index.html";
 });
