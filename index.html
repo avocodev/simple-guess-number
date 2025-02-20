@@ -4,112 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tebak Angka</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css"
   </head>
   <body>
     <div class="container">
-      <main class="content">
-        <h1>Tebak Angka 1 - 100</h1>
+      <h1>Tebak Angka</h1>
 
-        <p class="health js-health"></p>
+      <button class="play-button js-play-button">Start Game</button>
 
-        <input
-          type="number"
-          class="input-number js-input-number"
-          placeholder="Masukkan Angka"
-        />
+      <div class="selection-levels">
+        <h2>Choose your levels:</h2>
 
-        <p class="result js-result"></p>
-        <div class="js-confirmation-button"></div>
+        <div class="level-of-buttons">
+          <button onclick="maxNumber(50)">Easy</button>
+          <button onclick="maxNumber(100)">Medium</button>
+          <button onclick="maxNumber(200)">Hard</button>
+        </div>
 
-        <button class="button js-button">Tes</button>
-
-        <div class="true-number js-true-number"></div>
-      </main>
+        <button class="js-back-button"><</button>
+      </div>
     </div>
-    <script>
-      const randomNumber = Math.floor(Math.random() * 100) + 1;
-      let health = 10;
 
-      function guessNumber(randomNumber) {
-        const inputElement = document.querySelector(".js-input-number");
-        const value = Number(inputElement.value);
-
-        if (!value) {
-          return alert("Harus memasukkan angka!");
-        } else {
-          let result = "";
-
-          if (value < randomNumber) {
-            result = "Angka terlalu kecil!";
-            health--;
-          } else if (value > randomNumber) {
-            result = "Angka terlalu besar!";
-            health--;
-          } else if (value === randomNumber) {
-            result = "Selamat Anda berhasil menebak angka dengan benar!";
-            userWinner();
-          }
-
-          score(health);
-
-          inputElement.value = "";
-
-          return result;
-        }
-      }
-
-      function score(health) {
-        document.querySelector(".js-health").innerHTML = `Nyawa: ${health}`;
-
-        if (health === 0) {
-          document.querySelector(".js-true-number").innerHTML = `
-            <p>Maaf nyawa anda habis!</p>
-            <p>Angka yang benar adalah ${randomNumber}</p>
-            <p>
-              Mau coba lagi?
-              <div class="confirmation-button">
-                <button onclick=" location.reload();">Yes</button>
-                <button onclick="
-                  alert('Terimakasih sudah bermain!');
-                  location.reload();
-                ">No</button>
-              </div>
-            </p>  
-          `;
-
-          document.querySelector(".js-input-number").disabled = true;
-          document.querySelector(".js-button").style.display = "none";
-        }
-      }
-      score(health);
-
-      function userWinner() {
-        document.querySelector(".js-confirmation-button").innerHTML = `
-            <p>
-              Mau coba lagi?
-
-              <div class="confirmation-button">
-                <button onclick=" location.reload();">Yes</button>
-                <button onclick="
-                  alert('Terimakasih sudah bermain!');
-                  location.reload();
-                ">No</button>
-              </div>
-            </p>  
-          `;
-
-        document.querySelector(".js-input-number").disabled = true;
-        document.querySelector(".js-button").style.display = "none";
-      }
-
-      document.querySelector(".js-button").addEventListener("click", () => {
-        const result = guessNumber(randomNumber);
-
-        if (result) {
-          document.querySelector(".js-result").innerHTML = result;
-        }
-      });
-    </script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
