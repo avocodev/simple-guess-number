@@ -1,6 +1,6 @@
 setTimeout(() => {
   document.querySelector(".js-loading").style.display = "none";
-}, 3000);
+}, 5000);
 
 const level = Number(localStorage.getItem("level"));
 const randomNumber = Math.floor(Math.random() * level) + 1;
